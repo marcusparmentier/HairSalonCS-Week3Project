@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using HairSalon;
 using System;
 
 namespace HairSalon.Models
@@ -16,6 +15,26 @@ namespace HairSalon.Models
       _name = Name;
       _notes = Notes;
       _id = Id;
+    }
+
+    public override bool Equals(System.Object otherClient)
+    {
+      if (!(otherClient is Client))
+      {
+        return false;
+      }
+      else
+      {
+        Client newClient = (Client) otherClient;
+        bool nameEquality = (this.GetName() == newClient.GetName());
+        bool notesEquality = (this.GetNotes() == newClient.GetNotes());
+        return (nameEquality && notesEquality);
+      }
+    }
+
+    public override int GetHashCode()
+    {
+      return this.GetName().GetHashCode();
     }
 
     public string GetName()
@@ -53,6 +72,33 @@ namespace HairSalon.Models
           conn.Dispose();
       }
       return allClients;
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO clients (name, notes) VALUES (@name, @notes);";
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@name";
+      name.Value = this._name;
+      cmd.Parameters.Add(name);
+
+      MySqlParameter notes = new MySqlParameter();
+      notes.ParameterName = "@notes";
+      notes.Value = this._notes;
+      cmd.Parameters.Add(notes);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static void DeleteAll()
