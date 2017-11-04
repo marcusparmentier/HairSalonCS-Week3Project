@@ -105,5 +105,17 @@ namespace HairSalon.Tests
           //Assert
           Assert.AreEqual(nickName , result);
         }
+
+        [TestMethod]
+        public void DeleteClient_DeleteClientInDatabase_Null()
+        {
+          Client testClient = new Client("William", "Clean shave, Beard trim to 1 inch", 2);
+          testClient.Save();
+
+          testClient.DeleteClient();
+          int result = Client.GetAll().Count;
+
+          Assert.AreEqual(0, result);
+        }
     }
 }
