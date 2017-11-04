@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Hair Salon</h1>
+<h2>Add a new Stylist</h2>
+
+<form action="/stylists/new" method="post">
+  <label for="stylist-name">Stylist's Name:</label>
+  <input name="stylist-name" type="text" required>
+  <label for="stylist-details">Details:</label>
+  <input name="stylist-details" type="text">
+  <button type="submit">Add</button>
+</form>
+
+<br>
+<h4><a href="/">Return to directory</a></h4>
