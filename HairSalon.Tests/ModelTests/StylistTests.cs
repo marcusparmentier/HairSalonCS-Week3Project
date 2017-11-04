@@ -55,5 +55,20 @@ namespace HairSalon.Test
       //Assert
       CollectionAssert.AreEqual(testList, result);
     }
+
+    [TestMethod]
+    public void Find_FindsStylistInDatabase_Stylist()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Sara", "Station 2");
+      Stylist failStylist = new Stylist("Wendy", "Station 5", 3);
+      testStylist.Save();
+
+      //Act
+      Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+      //Assert
+      Assert.AreEqual(testStylist, foundStylist);
+    }
   }
 }
