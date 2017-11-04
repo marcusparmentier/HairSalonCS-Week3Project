@@ -32,8 +32,8 @@ namespace HairSalon.Tests
         public void Equals_OverRideTrueForSameName_Client()
         {
           // Arrange, Act
-          Client firstClient = new Client("Paul", "4 on top, 2 on the sides");
-          Client secondClient = new Client("Paul", "4 on top, 2 on the sides");
+          Client firstClient = new Client("Paul", "4 on top, 2 on the sides", 3);
+          Client secondClient = new Client("Paul", "4 on top, 2 on the sides", 3);
 
           // Assert
           Assert.AreEqual(firstClient, secondClient);
@@ -43,7 +43,7 @@ namespace HairSalon.Tests
         public void Save_SavesToDatabase_ClientList()
         {
           //Arrange
-          Client testClient = new Client("Paul", "4 on top, 2 on the sides");
+          Client testClient = new Client("Paul", "4 on top, 2 on the sides", 3);
           testClient.Save();
 
           //Act
@@ -58,7 +58,7 @@ namespace HairSalon.Tests
         public void Save_DatabaseAssignsIdToObject_Id()
         {
           //Arrange
-          Client testClient = new Client("Paul", "4 on top, 2 on the sides");
+          Client testClient = new Client("Paul", "4 on top, 2 on the sides", 3);
           testClient.Save();
 
           //Act
@@ -75,7 +75,7 @@ namespace HairSalon.Tests
         public void Find_FindsClientInDatabase_Client()
         {
           //Arrange
-          Client testClient = new Client("Paul", "4 on top, 2 on the sides");
+          Client testClient = new Client("Paul", "4 on top, 2 on the sides", 3);
           testClient.Save();
           // Client failClient = new Client("Fail", "2 on all");
           // failClient.Save();
