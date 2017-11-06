@@ -5,29 +5,24 @@
 <h1>HairSalon</h1>
 <hr />
 
-<h2>Stylist</h2>
-<h3>@Model["stylist"].GetEmployee()</h3>
-<h3>@Model["stylist"].GetDetails()</h3>
+<h1>Stylist</h1>
+<h4>@Model["stylist"].GetEmployee()</h4>
+<h4>@Model["stylist"].GetDetails()</h4>
 
 
 
-<h2>Clients</h2>
+<h1>Clients</h1>
 @if (@Model["clients"].Count != 0)
 {
   @foreach (var Client in @Model["clients"])
   {
   <ul>
-    <li>Client: @Client.GetName() | <a href="/client/@Client.GetId()/update">Update</a><br> Notes: @Client.GetNotes()</li>
+    <li>Client: @Client.GetName() | <a href="/client/@Client.GetId()/update">Update</a> | <a href="/client/@Client.GetId()/delete">Delete</a><br> Notes: @Client.GetNotes()</li>
   </ul>
   }
 }
 
 
-
-
-<form action="/clients/Delete" method="post">
-  <button type="submit">Delete All Clients</button>
-</form>
 
 <a href="/stylists">View All Stylists</a>
 <br>

@@ -17,9 +17,13 @@ A MVC app created with C Sharp and use of Razor and .NET framework with a databa
 
 
 
-* Add database setup later
+* Database setup
+  * > CREATE DATABASE marcus_parmentier;
+  * > USE marcus_parmentier;
+  * > CREATE TABLE stylists (id serial PRIMARY KEY, employee VARCHAR(255), details VARCHAR(255));
+  * > CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), notes VARCHAR(255, stylist_id INT);
 
-
+  * Repeat Instructions above except new database name is "marcus_parmentier_test"
 
 ## Known Bugs
 

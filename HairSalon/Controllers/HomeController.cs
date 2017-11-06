@@ -84,5 +84,13 @@ namespace HairSalon.Controllers
       return RedirectToAction("Stylists");
     }
 
+    [HttpGet("/client/{id}/delete")]
+    public ActionResult ClientDeleteSuccess(int id)
+    {
+      Client thisClient = Client.Find(id);
+      thisClient.DeleteClient();
+      return RedirectToAction("Stylists");
+    }
+
   }
 }
