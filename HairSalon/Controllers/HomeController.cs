@@ -69,5 +69,20 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
+    [HttpGet("/client/{id}/update")]
+    public ActionResult ClientUpdate(int id)
+    {
+      Client thisClient = Client.Find(id);
+      return View(thisClient);
+    }
+
+    [HttpPost("/client/{id}/update")]
+    public ActionResult ClientUpdateSuccess(int id)
+    {
+      Client thisClient = Client.Find(id);
+      thisClient.UpdateName(Request.Form["changed-name"]);
+      return RedirectToAction("Stylists");
+    }
+
   }
 }

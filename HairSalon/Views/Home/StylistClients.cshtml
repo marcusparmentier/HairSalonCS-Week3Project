@@ -6,16 +6,18 @@
 <hr />
 
 <h2>Stylist</h2>
-<h4>@Model["stylist"].GetEmployee()</h4>
+<h3>@Model["stylist"].GetEmployee()</h3>
+<h3>@Model["stylist"].GetDetails()</h3>
+
 
 
 <h2>Clients</h2>
 @if (@Model["clients"].Count != 0)
 {
-  @foreach (var client in @Model["clients"])
+  @foreach (var Client in @Model["clients"])
   {
   <ul>
-    <li>Client: @client.GetName() <br> Notes: @client.GetNotes()</li>
+    <li>Client: @Client.GetName() | <a href="/client/@Client.GetId()/update">Update</a><br> Notes: @Client.GetNotes()</li>
   </ul>
   }
 }
