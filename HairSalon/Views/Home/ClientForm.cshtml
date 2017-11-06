@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Hair Salon</h1>
+<h2>Add a new Client to Stylist</h2>
+
+
+
+
+<form action='/stylists/@Model["stylist"].GetId()' method='post'>
+  <input id='stylist-id' name='stylist-id' type='hidden' value='@Model["stylist"].GetId()'>
+  <label for='inputName'>Enter Client</label>
+  <input id='inputName' name='inputName' type='text'>
+  <label for='inputNotes'>Enter Client Notes</label>
+  <input id='inputNotes' name='inputNotes' type='text'>
+  <button type='submit'>Add Client</button>
+</form>
